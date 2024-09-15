@@ -59,76 +59,97 @@
 
 <div class="container">
   <h2 class="text-center mb-4">Sepetim</h2>
+      <div class="iframe-container">
+        <!-- İyzico'dan dönen iframe içeriği burada görüntülenir -->
+        {{ iframe_content|safe }}
+      </div>
 
   <!-- Sepet Ürünleri -->
   <div class="cart-section">
+    {% for urun in urunler %}
     <div class="cart-item">
-      <img src="https://via.placeholder.com/100" alt="Ürün Resmi">
-      <h6>Ürün Adı 1</h6>
-      <p>₺100</p>
-      <input type="number" class="form-control" value="1" style="width: 80px; margin: 0 auto;">
+      <img src="{{ urun.resim.url|default:'https://via.placeholder.com/100' }}" alt="{{ urun.ad }}">
+      <h6>{{ urun.ad }}</h6>
+      <p>₺{{ urun.fiyat }}</p>
     </div>
-    <div class="cart-item">
-      <img src="https://via.placeholder.com/100" alt="Ürün Resmi">
-      <h6>Ürün Adı 2</h6>
-      <p>₺200</p>
-      <input type="number" class="form-control" value="1" style="width: 80px; margin: 0 auto;">
-    </div>
-    <div class="cart-item">
-      <img src="https://via.placeholder.com/100" alt="Ürün Resmi">
-      <h6>Ürün Adı 3</h6>
-      <p>₺150</p>
-      <input type="number" class="form-control" value="1" style="width: 80px; margin: 0 auto;">
-    </div>
+    {% endfor %}
   </div>
 
   <!-- Toplam Tutar -->
   <div class="cart-total text-end mb-4">
-    Toplam: ₺450
+    Toplam: ₺{{ toplam_fiyat }}
   </div>
 
   <!-- Sipariş Formu -->
   <div class="form-section">
     <h5 class="mb-3">Sipariş Bilgileri</h5>
-    <form action="#" method="post">
+    <form action="{% url 'sepet' %}" method="post">
+      {% csrf_token %}
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="firstName" class="form-label">Ad</label>
-          <input type="text" class="form-control" id="firstName" required>
+          <input type="text" class="form-control" id="firstName" name="ad" required>
         </div>
         <div class="col-md-6 mb-3">
           <label for="lastName" class="form-label">Soyad</label>
-          <input type="text" class="form-control" id="lastName" required>
+          <input type="text" class="form-control" id="lastName" name="soyad" required>
         </div>
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Adres</label>
-        <textarea class="form-control" id="address" rows="2" required></textarea>
+        <textarea class="form-control" id="address" name="adres" rows="2" required></textarea>
       </div>
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="city" class="form-label">İl</label>
-          <input type="text" class="form-control" id="city" required>
+          <input type="text" class="form-control" id="city" name="sehir" required>
         </div>
         <div class="col-md-6 mb-3">
           <label for="district" class="form-label">İlçe</label>
-          <input type="text" class="form-control" id="district" required>
+          <input type="text" class="form-control" id="district" name="ilce" required>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="country" class="form-label">Ülke</label>
-          <input type="text" class="form-control" id="country" required>
+          <input type="text" class="form-control" id="country" name="ulke" required>
         </div>
         <div class="col-md-6 mb-3">
           <label for="postalCode" class="form-label">Posta Kodu</label>
-          <input type="text" class="form-control" id="postalCode" required>
+          <input type="text" class="form-control" id="postalCode" name="posta_kodu" required>
         </div>
       </div>
-      <!-- Sepeti Onayla Butonu -->
-      <div class="text-end">
-        <button type="submit" class="btn checkout-btn w-25">Sepeti Onayla</button>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
       </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Telefon</label>
+        <input type="text" class="form-control" id="phone" name="telefon" required>
+      </div>
+      <!-- <div class="mb-3">
+        <label for="cardHolderName" class="form-label">Kart Sahibi Adı</label>
+        <input type="text" class="form-control" id="cardHolderName" name="kart_sahibi_adi" required>
+      </div>
+      <div class="mb-3">
+        <label for="cardNumber" class="form-label">Kart Numarası</label>
+        <input type="text" class="form-control" id="cardNumber" name="kart_numarasi" required>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="expiryYear" class="form-label">Son Kullanma Yılı</label>
+          <input type="text" class="form-control" id="expiryYear" name="son_kullanma_yili" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="expiryMonth" class="form-label">Son Kullanma Ayı</label>
+          <input type="text" class="form-control" id="expiryMonth" name="son_kullanma_ayi" required>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="cvc" class="form-label">CVC</label>
+        <input type="text" class="form-control" id="cvc" name="cvc" required>
+      </div> -->
+      <button type="submit" class="btn checkout-btn">Ödemeyi Tamamla</button>
     </form>
   </div>
 </div>

@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'sepet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -113,3 +114,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+IYZI_SECRET_KEY="sandbox-u1mToDCx5puIQYVKPVQ599RGRLP4lk4Z" # test ortamı için sandbox secret key
+IYZI_API_KEY="sandbox-L1UHnMQ0EPJjZ5KMakB1Ex2DE4jvAT7f" #test ortamı için sandbox api key
+IYZI_BASE_URL="sandbox-api.iyzipay.com" #test ortamı için "sandbox-api.iyzipay.com", gerçek ortam için "api.iyzipay.com"

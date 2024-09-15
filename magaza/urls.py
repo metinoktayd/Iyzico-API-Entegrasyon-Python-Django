@@ -6,6 +6,7 @@ from sepet import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.siparis_onay, name="siparis_onay")
+    path('', views.sepet, name="sepet"),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
