@@ -115,6 +115,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-IYZI_SECRET_KEY="sandbox-u1mToDCx5puIQYVKPVQ599RGRLP4lk4Z" # test ortamı için sandbox secret key
-IYZI_API_KEY="sandbox-L1UHnMQ0EPJjZ5KMakB1Ex2DE4jvAT7f" #test ortamı için sandbox api key
+IYZI_SECRET_KEY="" # test ortamı için sandbox secret key
+IYZI_API_KEY="" #test ortamı için sandbox api key
 IYZI_BASE_URL="sandbox-api.iyzipay.com" #test ortamı için "sandbox-api.iyzipay.com", gerçek ortam için "api.iyzipay.com"
